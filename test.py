@@ -13,10 +13,22 @@ while mycpu.running:
 """
 
 print(myprogram.program)
-mycpu = Cpu()
-while mycpu.running:
-    instruction = mycpu.readline(myprogram.program)
+myCpu = Cpu()
+myInstruction = StructionSet(myCpu)
+
+myInstruction.RUN()
+ans = 0
+while myCpu.state == "RUNNING":
+    instruction = myCpu.readline(myprogram.program)
     if instruction is None:
         break
-    command, register = mycpu.splitInstruction(instruction)
-    myStructionSet = StructionSet()
+    command, *args = myCpu.splitInstruction(instruction)
+
+    if command == "MOV":
+        myInstruction.MOV(*args)
+    if command == "ADD":
+        ans = myInstruction.ADD(*args)
+    if command == "HALT":
+        print(myCpu.state, myCpu.reg, ans)
+
+        myInstruction.HALT()
