@@ -13,7 +13,7 @@ class StructionSet:
         self.cpu.state = "HALTED"
 
     def RESET(self):
-        self.cpu.reg = {"A": 0, "B": 0, "C": 0, "D": 0}
+        # self.cpu.reg = {"A": 0, "B": 0, "C": 0, "D": 0}
         self.cpu.pc = 0
         self.cpu.z = 0
         self.cpu.memory = [0] * 4096
@@ -21,6 +21,8 @@ class StructionSet:
         return self.cpu.state
 
     def MOV(self, address, info):
+        if address in self.cpu.reg:
+            value = address
         self.cpu.reg[address] = info
         return self.cpu.reg
 

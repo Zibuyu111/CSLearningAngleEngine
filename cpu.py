@@ -1,10 +1,13 @@
+from register import Register
+
+
 class Cpu:
     # hardware infomation
     REG_BITS = 8
     REG_MAX = (1 << REG_BITS) - 1
 
     def __init__(self):
-        self.reg = {"A": 0, "B": 0, "C": 0, "D": 0}
+        self.reg = [Register(), Register(), Register(), Register()]
         self.pc = 0
         self.z = 0
         self.memory = [0] * 4096

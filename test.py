@@ -1,5 +1,8 @@
+import re
+
 import myprogram
 from cpu import Cpu
+from register import Register
 from structionSet import StructionSet
 
 """
@@ -12,8 +15,8 @@ while mycpu.running:
     print(f"current pc address:{mycpu.pc},carry out instruction:{instruction}")
 """
 
-print(myprogram.program)
-myCpu = Cpu()
+"""print(myprogram.program)
+myCpupu = Cpu()
 myInstruction = StructionSet(myCpu)
 
 myInstruction.RUN()
@@ -31,4 +34,12 @@ while myCpu.state == "RUNNING":
     if command == "HALT":
         print(myCpu.state, myCpu.reg, ans)
 
-        myInstruction.HALT()
+        myInstruction.HALT()"""
+
+
+register = Register()
+
+register.load(ord("A"))
+print("RUNNING")
+print(register.read())
+print(chr(int("".join(map(str, reversed(register.read()))), 2)))
