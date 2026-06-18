@@ -1,7 +1,9 @@
 import re
+from typing import Self
 
 import myprogram
 from cpu import Cpu
+from program_counter import ProgramCounter
 from register import Register
 from structionSet import StructionSet
 
@@ -35,11 +37,21 @@ while myCpu.state == "RUNNING":
         print(myCpu.state, myCpu.reg, ans)
 
         myInstruction.HALT()"""
-
-
+"""
 register = Register()
 
 register.load(ord("A"))
 print("RUNNING")
 print(register.read())
 print(chr(int("".join(map(str, reversed(register.read()))), 2)))
+"""
+
+pc = ProgramCounter()
+print("new program_counter")
+print(pc.read())
+print("load basic data")
+print("pc.jump([1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1])")
+pc.jump([1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1])
+print("increment")
+pc.increment()
+print(pc.read())

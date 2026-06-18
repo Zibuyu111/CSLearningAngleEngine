@@ -1,5 +1,4 @@
 from half_adder import HalfAdder
-from nbit_ripple_adder import nbit_ripple_adder
 
 
 class FullAdder:
@@ -10,7 +9,7 @@ class FullAdder:
         return setA | setB
 
     def full_adder(self, setA: int, setB: int, Carry_in: int) -> tuple[int, int]:
-        sum1, carry1 = self.ha1(setA, setB)
-        sum, carry2 = self.ha2(sum1, Carry_in)
+        sum1, carry1 = self.ha1.halfadder(setA, setB)
+        sum, carry2 = self.ha2.halfadder(sum1, Carry_in)
         carry = self.or_gate(carry1, carry2)
         return sum, carry

@@ -15,5 +15,8 @@ class ProgramCounter(Register):
         next_sequence, _ = nbra.add(self.read(), self.one)
         self.load(next_sequence)
 
-    def jump(self, target):
+    def jump(self, target: list[int]):
         self.load(target)
+
+    def read(self):
+        return super().read()
