@@ -3,6 +3,7 @@ from typing import Self
 
 import myprogram
 from cpu import Cpu
+from memory import Memory
 from program_counter import ProgramCounter
 from register import Register
 from structionSet import StructionSet
@@ -45,7 +46,7 @@ print("RUNNING")
 print(register.read())
 print(chr(int("".join(map(str, reversed(register.read()))), 2)))
 """
-
+"""
 pc = ProgramCounter()
 print("new program_counter")
 print(pc.read())
@@ -55,3 +56,17 @@ pc.jump([1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1])
 print("increment")
 pc.increment()
 print(pc.read())
+"""
+
+# MOV = 0001 ADD = 0010 HALT = 0011
+
+memory = Memory()
+pc = ProgramCounter()
+a = memory.load(bin(0)[2:], [0, 0, 0, 1])
+b = memory.load(bin(1)[2:], [0, 0, 1, 0])
+c = memory.load(bin(2)[2:], [0, 0, 1, 1])
+print(a, b, c)
+
+pc.jump(bin(0)[2:])
+d = memory.read(pc.read())
+print(d)
