@@ -14,6 +14,7 @@ class ProgramCounter(Register):
     def increment(self):
         next_sequence, _ = nbra.add(self.read(), self.one)
         self.load(next_sequence)
+        print("next_sequence", next_sequence)
 
     def jump(self, target: list[int]):
         self.load(target)

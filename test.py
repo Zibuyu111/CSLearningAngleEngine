@@ -69,4 +69,7 @@ print(a, b, c)
 
 pc.jump([0, 0, 0, 0])
 d = memory.read(pc.read())
-print(d)
+pc.increment()
+print("increment")
+p = memory.read(reversed(pc.read()))
+print(d, p)

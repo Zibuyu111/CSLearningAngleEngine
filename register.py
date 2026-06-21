@@ -1,5 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
-from threading import Barrier, Thread
+from threading import Barrier
 
 from bit import Bit
 
